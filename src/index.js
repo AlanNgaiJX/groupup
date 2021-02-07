@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import App from '@/App.js';
+import reportWebVitals from '@/reportWebVitals.js';
+import "@/assets/common/css/common.css";
+import  '@/units/remUnit.js';
+import '@/units/svgUnit.js';
 
 ReactDOM.render(
   <React.StrictMode>

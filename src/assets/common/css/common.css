@@ -1,0 +1,55 @@
+﻿/* 清空默认样式 */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strong, sub, sup, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, input {
+  margin: 0;
+  padding: 0;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input, button, textarea {
+  outline: none;
+}
+
+body, input, button {
+  font-family: "Microsoft YaHei","Lantinghei SC","Hiragino Sans GB","WenQuanYi Micro Hei",sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 清空默认样式 end */
+
+/* mini滚动条 */
+.mini-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+.mini-scroll::-webkit-scrollbar-button{
+  display: none;
+}
+.mini-scroll::-webkit-scrollbar-track{
+  background:#fff;
+}
+.mini-scroll::-webkit-scrollbar-track-piece{
+  background: #fff;
+  /* box-shadow: inset 1px 1px 5px #ddd; */
+}
+.mini-scroll::-webkit-scrollbar-thumb{
+  background:#ddd;
+  border: solid 2px #fff;
+  /* border-image: linear-gradient(90deg, #ddd,#fff) 20; */
+  border-radius: 10px;
+}
+.mini-scroll::-webkit-scrollbar-corner{
+  background:#fff;
+}
+.mini-scroll::-webkit-scrollbar-resizer{
+  background:#fff;
+}
+/* mini滚动条 end */
