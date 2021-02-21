@@ -1,19 +1,32 @@
 import React from "react";
+import { connect } from "react-redux";
 import classnames from "classnames";
 import SvgIcon from "@/components/svg-icon/svg-icon.js";
 import "./regist-phone.scss";
 
-class RegistPhone extends React.Component {
+import { updateRegistForm, resetRegistForm } from "@/redux/actionCreater.js";
+
+const mapState = (state) => ({ registForm: state.registForm , count:state.count});
+
+const mapDispatch = {
+    updateRegistForm,
+    resetRegistForm
+};
+
+class RegistPhoneUI extends React.Component {
     state = {
         checkboxState: false,
-        phoneInput: "18122803695",
     };
 
     handlePhoneInput = () => {
         return (e) => {
-            this.setState({ phoneInput: e.target.value });
+            this.props.updateRegistForm({ phone: e.target.value });
         };
     };
+
+    validPhone = (phone)=>{
+        return /^\d{11}$/.test(phone);
+    }
 
     clickCheckbox = () => {
         this.setState({
@@ -22,16 +35,18 @@ class RegistPhone extends React.Component {
     };
 
     routeBack = () => {
+        this.props.resetRegistForm();
         this.props.history.goBack();
     };
 
-    nextStep = ()=>{
-        this.props.history.replace("/regist-verify")
-    }
+    nextStep = () => {
+        this.props.history.replace("/regist-verify");
+    };
 
     render() {
-        const { phoneInput, checkboxState } = this.state;
-        const canNextStep = checkboxState && phoneInput !== "";
+        const { phone } = this.props.registForm;
+        const { checkboxState } = this.state;
+        const canNextStep = checkboxState && this.validPhone(phone);
 
         return (
             <div id="regist-phone">
@@ -55,7 +70,7 @@ class RegistPhone extends React.Component {
                             <div className="area-code">+86</div>
                             <input
                                 placeholder="请输入手机号码"
-                                value={phoneInput}
+                                value={phone}
                                 onChange={this.handlePhoneInput()}
                             />
                         </div>
@@ -112,4 +127,6 @@ class RegistPhone extends React.Component {
     }
 }
 
-export default RegistPhone;
+const RegistPhoneContainer = connect(mapState, mapDispatch)(RegistPhoneUI);
+
+export default RegistPhoneContainer;

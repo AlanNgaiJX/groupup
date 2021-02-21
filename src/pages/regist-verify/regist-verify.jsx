@@ -1,10 +1,22 @@
 import React from "react";
+import { connect } from "react-redux";
 import SvgIcon from "@/components/svg-icon/svg-icon.js";
 import "./regist-verify.scss";
 
-class RegistVerify extends React.Component {
+import { updateRegistForm, resetRegistForm } from "@/redux/actionCreater.js";
+
+const mapState = (state) => ({
+    registForm: state.registForm,
+    count: state.count,
+});
+
+const mapDispatch = {
+    updateRegistForm,
+    resetRegistForm,
+};
+
+class RegistVerifyUI extends React.Component {
     state = {
-        vcodeInput: "",
         focusInput: false,
         count: 5,
         vcodeMaxLength: 6,
@@ -41,11 +53,10 @@ class RegistVerify extends React.Component {
     };
 
     handleFocusInput = () => {
-        const { vcodeInput, vcodeMaxLength } = this.state;
-        if (vcodeInput.length === vcodeMaxLength) {
-            this.setState({
-                vcodeInput: "",
-            });
+        const { vcode } = this.props.registForm;
+        const { vcodeMaxLength } = this.state;
+        if (vcode.length === vcodeMaxLength) {
+            this.props.updateRegistForm({ vcode: "" });
         }
 
         this.setState({
@@ -66,9 +77,8 @@ class RegistVerify extends React.Component {
             if (value.length > vcodeMaxLength) {
                 e.target.value = value = value.slice(0, vcodeMaxLength);
             }
-            this.setState({
-                vcodeInput: value,
-            });
+
+            this.props.updateRegistForm({ vcode: value });
 
             if (value.length === vcodeMaxLength) {
                 console.log("send：", value);
@@ -78,6 +88,7 @@ class RegistVerify extends React.Component {
     };
 
     routeBack = () => {
+        this.props.resetRegistForm();
         this.props.history.goBack();
     };
 
@@ -94,7 +105,9 @@ class RegistVerify extends React.Component {
     }
 
     render() {
-        const { count, vcodeMaxLength, vcodeInput, focusInput } = this.state;
+        const { vcode } = this.props.registForm;
+        const { count, vcodeMaxLength, focusInput } = this.state;
+
         return (
             <div id="regist-verify">
                 <div className="page-header">
@@ -133,10 +146,10 @@ class RegistVerify extends React.Component {
                                     {Array.apply(null, {
                                         length: vcodeMaxLength,
                                     }).map((item, index) => {
-                                        const content = vcodeInput[index] || "";
+                                        const content = vcode[index] || "";
                                         return (
                                             <li key={index}>
-                                                {vcodeInput.length === index &&
+                                                {vcode.length === index &&
                                                 focusInput ? (
                                                     <span className="focus"></span>
                                                 ) : (
@@ -150,7 +163,7 @@ class RegistVerify extends React.Component {
                                 </ul>
                                 <input
                                     type="number"
-                                    value={vcodeInput}
+                                    value={vcode}
                                     onFocus={this.handleFocusInput}
                                     onBlur={this.handleBlurInput}
                                     onChange={this.handleVcodeInput()}
@@ -164,4 +177,6 @@ class RegistVerify extends React.Component {
     }
 }
 
-export default RegistVerify;
+const RegistVerifyContainer = connect(mapState, mapDispatch)(RegistVerifyUI);
+
+export default RegistVerifyContainer;

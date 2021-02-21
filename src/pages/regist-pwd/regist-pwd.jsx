@@ -1,12 +1,23 @@
 import React from "react";
+import { connect } from "react-redux";
 import classnames from "classnames";
 import SvgIcon from "@/components/svg-icon/svg-icon.js";
 import "./regist-pwd.scss";
 
-class RegistPwd extends React.Component {
+import { updateRegistForm, resetRegistForm } from "@/redux/actionCreater.js";
+
+const mapState = (state) => ({
+    registForm: state.registForm,
+    count: state.count,
+});
+
+const mapDispatch = {
+    updateRegistForm,
+    resetRegistForm,
+};
+
+class RegistPwdUI extends React.Component {
     state = {
-        canSubmit: false,
-        pwdInput: "",
         pwdMaxLength: 16,
     };
 
@@ -18,10 +29,9 @@ class RegistPwd extends React.Component {
             if (value.length > pwdMaxLength) {
                 e.target.value = value = value.slice(0, pwdMaxLength);
             }
-            console.log(value);
-            this.setState({
-                pwdInput: value,
-                canSubmit: this.validPwd(value),
+
+            this.props.updateRegistForm({
+                password: value,
             });
         };
     };
@@ -33,13 +43,15 @@ class RegistPwd extends React.Component {
         const regs = [/^[a-zA-Z\d]{8,16}$/, /[a-zA-Z]/, /[\d]/];
         return regs.every((reg) => reg.test(value));
     };
-    
+
     routeBack = () => {
+        this.props.resetRegistForm();
         this.props.history.goBack();
     };
 
     render() {
-        const { pwdInput, canSubmit } = this.state;
+        const { password } = this.props.registForm;
+        const canSubmit = this.validPwd(password);
         return (
             <div id="regist-pwd">
                 <div className="page-header">
@@ -61,7 +73,7 @@ class RegistPwd extends React.Component {
                             <input
                                 type="password"
                                 placeholder="8-16位密码"
-                                value={pwdInput}
+                                value={password}
                                 onChange={this.handlePwdInput()}
                             />
                             <div className="input-labels">
@@ -87,4 +99,6 @@ class RegistPwd extends React.Component {
     }
 }
 
-export default RegistPwd;
+const RegistPwdContainer = connect(mapState, mapDispatch)(RegistPwdUI);
+
+export default RegistPwdContainer;
