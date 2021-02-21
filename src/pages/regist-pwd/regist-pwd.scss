@@ -1,0 +1,109 @@
+#regist-pwd {
+    .page-header {
+        height: 0.88rem;
+        display: flex;
+        align-items: flex-end;
+        box-sizing: border-box;
+        padding: 0 0.3rem;
+
+        .btn-back {
+            width: 0.6rem;
+            height: 0.6rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .btn-back-icon {
+                width: 0.4rem;
+                height: 0.4rem;
+            }
+        }
+    }
+
+    .page-content {
+        .form {
+            box-sizing: border-box;
+            padding: 0 0.3rem;
+            margin-top: 0.6rem;
+
+            .label-group {
+                display: flex;
+                flex-direction: column;
+
+                .label-main {
+                    font-size: 0.6rem;
+                }
+
+                .label-aside {
+                    font-size: 0.28rem;
+                    color: #a2a3a5;
+                    margin-top: 0.2rem;
+                }
+            }
+
+            .input-wrap {
+                display: flex;
+                flex-direction: column;
+                margin-top: 1.2rem;
+                color: #5b5c5d;
+
+                input {
+                    width: 100%;
+                    height: 1rem;
+                    border: none;
+                    border-bottom: 1px solid #eeeeee;
+                    font-size: 0.36rem;
+                    color: #5b5c5d;
+
+                    &::-webkit-input-placeholder {
+                        /* Chrome/Opera/Safari */
+                        color: #999;
+                    }
+
+                    &::-moz-placeholder {
+                        /* Firefox 19+ */
+                        color: #999;
+                    }
+
+                    &:-ms-input-placeholder {
+                        /* IE 10+ */
+                        color: #999;
+                    }
+
+                    &:-moz-placeholder {
+                        /* Firefox 18- */
+                        color: #999;
+                    }
+                }
+
+                .input-labels {
+                    margin-top: 0.3rem;
+
+                    .label-item {
+                        margin-bottom: 0.2rem;
+                    }
+                }
+            }
+
+            .btn-submit {
+                width: 100%;
+                height: 1rem;
+                border-radius: 0.1rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 0.3rem;
+                margin-top: 0.8rem;
+                color: #fff;
+
+                &.default {
+                    background-color: #cacbcc;
+                }
+
+                &.active {
+                    background-color: #0272f5;
+                }
+            }
+        }
+    }
+}

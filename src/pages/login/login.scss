@@ -1,0 +1,106 @@
+#login {
+    .page-header {
+        height: 0.88rem;
+        display: flex;
+        align-items: flex-end;
+        box-sizing: border-box;
+        padding: 0 0.3rem;
+    }
+
+    .page-content {
+        .form {
+            box-sizing: border-box;
+            padding: 0 0.3rem;
+            margin-top: 0.6rem;
+
+            .label-group {
+                display: flex;
+                flex-direction: column;
+
+                .label-main {
+                    font-size: 0.6rem;
+                }
+
+                .label-aside {
+                    font-size: 0.28rem;
+                    color: #a2a3a5;
+                    margin-top: 0.2rem;
+                }
+            }
+        }
+
+        .input-wrap {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #eeeeee;
+            height: 1rem;
+            margin-top: 1.6rem;
+            color: #5b5c5d;
+
+            &.pwd-input-wrap {
+                margin-top: 0.8rem;
+                padding-left: 0.9rem;
+            }
+
+            .area-code {
+                margin-right: 0.3rem;
+                font-size: 0.3rem;
+            }
+
+            input {
+                flex: 1;
+                border: none;
+                font-size: 0.45rem;
+                background-color: transparent;
+                word-spacing: 1rem;
+
+                &::-webkit-input-placeholder {
+                    /* Chrome/Opera/Safari */
+                    color: #999;
+                }
+
+                &::-moz-placeholder {
+                    /* Firefox 19+ */
+                    color: #999;
+                }
+
+                &:-ms-input-placeholder {
+                    /* IE 10+ */
+                    color: #999;
+                }
+
+                &:-moz-placeholder {
+                    /* Firefox 18- */
+                    color: #999;
+                }
+            }
+        }
+
+        .btn-submit {
+            width: 100%;
+            height: 1rem;
+            border-radius: 0.1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.3rem;
+            margin-top: 0.8rem;
+            color: #fff;
+
+            &.default {
+                background-color: #cacbcc;
+            }
+
+            &.active {
+                background-color: #0272f5;
+            }
+        }
+
+        .to-regist{
+            margin-top: .6rem;
+            display: flex;
+            justify-content: center;
+            color: rgb(131, 131, 131);
+        }
+    }
+}

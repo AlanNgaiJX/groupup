@@ -1,0 +1,135 @@
+#regist-verify {
+    .page-header {
+        height: 0.88rem;
+        display: flex;
+        align-items: flex-end;
+        box-sizing: border-box;
+        padding: 0 0.3rem;
+
+        .btn-back {
+            width: 0.6rem;
+            height: 0.6rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .btn-back-icon {
+                width: 0.4rem;
+                height: 0.4rem;
+            }
+        }
+    }
+
+    .page-content {
+        .form {
+            box-sizing: border-box;
+            padding: 0 0.3rem;
+            margin-top: 0.6rem;
+
+            .label-group {
+                display: flex;
+                flex-direction: column;
+
+                .label-main {
+                    font-size: 0.6rem;
+                }
+
+                .label-aside {
+                    font-size: 0.28rem;
+                    color: #a2a3a5;
+                    margin-top: 0.2rem;
+                }
+
+                .label-phone {
+                    font-size: 0.28rem;
+                    color: #a2a3a5;
+                }
+            }
+
+            .input-wrap {
+                margin-top: 0.8rem;
+                .label {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .txt {
+                        color: #b6b6b6;
+                    }
+
+                    .count {
+                        color: #8600ff;
+                    }
+
+                    .resend{
+                        background-color: #8600ff;
+                        color: #fff;
+                        width: 1.3rem;
+                        height: .4rem;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 1rem;
+                    }
+                }
+
+                .vcode {
+                    margin-top: 0.3rem;
+                    width: 100%;
+                    height: 1rem;
+                    position: relative;
+
+                    .shown {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        pointer-events: none;
+
+                        li{
+                            height: 1rem;
+                            width: 1rem;
+                            border: 1px solid #eeeeee;
+                            box-sizing: border-box;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            .content{
+                                font-size: .4rem;
+                            }
+
+                            @keyframes flashing {
+                                0%{
+                                    opacity: 0;
+                                }
+
+                                100%{
+                                    opacity: 1;
+                                }
+                            }
+
+                            .focus{
+                                width: 1px;
+                                height: 80%;
+                                background-color: #8600ff;
+                                animation: flashing;
+                                animation-duration: 1.5s;
+                                animation-iteration-count: infinite;
+                            }
+                        }
+                    }
+
+                    input {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        border: none;
+                        background-color: red;
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+    }
+}
