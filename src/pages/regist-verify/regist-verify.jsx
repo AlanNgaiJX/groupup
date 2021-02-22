@@ -138,7 +138,7 @@ class RegistVerifyUI extends React.Component {
                                         重新发送
                                     </div>
                                 ) : (
-                                    <div className="count">{count}s</div>
+                                    <div className="count">验证码已发送（默认6个1） {count}s</div>
                                 )}
                             </div>
                             <div className="vcode">

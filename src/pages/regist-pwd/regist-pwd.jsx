@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import classnames from "classnames";
 import SvgIcon from "@/components/svg-icon/svg-icon.js";
+import { publicEncrypt } from "@/units/utilsUnit.js";
+import * as Api from "@/api/index.js";
 import "./regist-pwd.scss";
 
 import { updateRegistForm, resetRegistForm } from "@/redux/actionCreater.js";
@@ -9,6 +11,7 @@ import { updateRegistForm, resetRegistForm } from "@/redux/actionCreater.js";
 const mapState = (state) => ({
     registForm: state.registForm,
     count: state.count,
+    publicKey: state.publicKey,
 });
 
 const mapDispatch = {
@@ -44,14 +47,47 @@ class RegistPwdUI extends React.Component {
         return regs.every((reg) => reg.test(value));
     };
 
+    validPhone = (phone) => {
+        return /^\d{11}$/.test(phone);
+    };
+
     routeBack = () => {
         this.props.resetRegistForm();
         this.props.history.goBack();
     };
 
+    submit = () => {
+        /* 验证表单，请求注册 */
+        if (this.checkCanSubmit()) {
+            const { phone, password } = this.props.registForm;
+            const publicKey = this.props.publicKey;
+            const encodePhone = publicEncrypt(publicKey, phone);
+            const encodePwd = publicEncrypt(publicKey, password);
+
+            Api.postRegist({
+                phone: encodePhone,
+                password: encodePwd,
+                vcode: "1111",
+            }).then((res) => {
+                console.log(res);
+            });
+        }
+    };
+
+    checkCanSubmit = () => {
+        const { password, phone } = this.props.registForm;
+        return this.validPhone(phone) && this.validPwd(password);
+    };
+
+    componentDidMount() {
+        if (this.props.registForm.phone === "") {
+            this.props.history.replace("/regist-phone");
+        }
+    }
+
     render() {
         const { password } = this.props.registForm;
-        const canSubmit = this.validPwd(password);
+        const canSubmit = this.checkCanSubmit();
         return (
             <div id="regist-pwd">
                 <div className="page-header">
@@ -89,6 +125,7 @@ class RegistPwdUI extends React.Component {
                                 "btn-submit",
                                 canSubmit ? "active" : "default",
                             ])}
+                            onClick={this.submit}
                         >
                             确认
                         </div>

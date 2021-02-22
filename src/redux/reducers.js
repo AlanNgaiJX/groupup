@@ -22,3 +22,12 @@ export function registForm(state = Object.assign({}, initRegistForm), action) {
             return state;
     }
 }
+
+export function publicKey(state = "", action) {
+    switch (action.type) {
+        case "UPDATE_PUBLICKEY":
+            return action.publicKey;
+        default:
+            return state;
+    }
+}
