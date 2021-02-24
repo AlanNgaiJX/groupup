@@ -6,7 +6,7 @@ import Login from "@/pages/login/login.jsx";
 import RegistPhone from "@/pages/regist-phone/regist-phone.jsx";
 import RegistVerify from "@/pages/regist-verify/regist-verify.jsx";
 import RegistPwd from "@/pages/regist-pwd/regist-pwd.jsx";
-import TestPage from "@/pages/test-page/test-page.js";
+import TestPage from "@/pages/test-page/test-page.jsx";
 import * as Api from "@/api/index.js";
 import "@/App.scss";
 import { updatePublicKey } from "@/redux/actionCreater.js";
