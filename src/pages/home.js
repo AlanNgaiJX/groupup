@@ -22,6 +22,11 @@ function home(props) {
                     </button>
                 </li>
                 <li>
+                    <button onClick={() => routeTo("/login")}>
+                        to login
+                    </button>
+                </li>
+                <li>
                     <button onClick={() => routeTo("/test-page")}>
                         to test-page
                     </button>
