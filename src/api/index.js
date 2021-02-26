@@ -37,6 +37,17 @@ export function loginByPwd(args) {
     });
 }
 
+export function uploadImg(args) {
+    const data = new FormData();
+    const { file, fileName } = args;
+    data.append("fileName", fileName);
+    data.append("file", file);
+
+    return instance.post("/common/uploadImg", data, {
+        headers: { "Content-Type": "multipart/form-data" },
+    });
+}
+
 export function getToken() {
     return instance.post("/test/getToken");
 }

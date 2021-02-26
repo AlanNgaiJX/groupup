@@ -5,6 +5,7 @@ import SvgIcon from "@/components/svg-icon/svg-icon.js";
 import { publicEncrypt } from "@/units/utilsUnit.js";
 import * as Api from "@/api/index.js";
 import "./regist-pwd.scss";
+import modal from "@/units/modalUnit.js";
 
 import { updateRegistForm, resetRegistForm } from "@/redux/actionCreater.js";
 
@@ -63,13 +64,33 @@ class RegistPwdUI extends React.Component {
             const publicKey = this.props.publicKey;
             const encodePhone = publicEncrypt(publicKey, phone);
             const encodePwd = publicEncrypt(publicKey, password);
-
+            modal.showLoading();
             Api.postRegist({
                 phone: encodePhone,
                 password: encodePwd,
                 vcode: "1111",
             }).then((res) => {
-                console.log(res);
+                modal.hideLoading();
+                if (res.data.code === 200) {
+                    modal.showToast({ type: "success", title: "注册成功" });
+                    this.props.history.push("/");
+                } else if (res.data.code === 99) {
+                    modal.showModal({
+                        type: "alert",
+                        title: "注册失败，账号已存在",
+                        success: () => {
+                            this.props.history.goBack();
+                        },
+                    });
+                } else {
+                    modal.showModal({
+                        type: "alert",
+                        title: res.data.msg,
+                        success: () => {
+                            this.props.history.goBack();
+                        },
+                    });
+                }
             });
         }
     };

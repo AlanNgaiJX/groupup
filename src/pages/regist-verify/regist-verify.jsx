@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import SvgIcon from "@/components/svg-icon/svg-icon.js";
+import { showLoading, hideLoading } from "@/units/modalUnit.js";
 import "./regist-verify.scss";
 
 import { updateRegistForm, resetRegistForm } from "@/redux/actionCreater.js";
@@ -93,7 +94,11 @@ class RegistVerifyUI extends React.Component {
     };
 
     nextStep = () => {
-        this.props.history.replace("/regist-pwd");
+        showLoading({});
+        setTimeout(() => {
+            hideLoading();
+            this.props.history.replace("/regist-pwd");
+        }, 2000);
     };
 
     componentDidMount() {
@@ -138,7 +143,9 @@ class RegistVerifyUI extends React.Component {
                                         重新发送
                                     </div>
                                 ) : (
-                                    <div className="count">验证码已发送（默认6个1） {count}s</div>
+                                    <div className="count">
+                                        验证码已发送（默认6个1） {count}s
+                                    </div>
                                 )}
                             </div>
                             <div className="vcode">

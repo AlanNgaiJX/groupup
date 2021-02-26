@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
-import Home from "@/pages/home.js";
+import Home from "@/pages/home/home.jsx";
 import Login from "@/pages/login/login.jsx";
 import RegistPhone from "@/pages/regist-phone/regist-phone.jsx";
 import RegistVerify from "@/pages/regist-verify/regist-verify.jsx";

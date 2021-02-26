@@ -1,15 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-// import fastclick from "fastclick";
 import App from "@/App.jsx";
 import store from "@/redux/store.js";
 import reportWebVitals from "@/reportWebVitals.js";
 import "@/assets/common/css/common.css";
 import "@/units/remUnit.js";
 import "@/units/svgUnit.js";
-
-// fastclick.call(window,document.body);
+import "@/units/uploadFilesUnits.js";
 
 ReactDOM.render(
     <React.StrictMode>
