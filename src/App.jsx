@@ -1,7 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch,
+    Redirect,
+} from "react-router-dom";
 import { connect } from "react-redux";
 import Home from "@/pages/home/home.jsx";
+import Me from "@/pages/me/me.jsx";
+import MeInfo from "@/pages/me-info/me-info.jsx";
 import Login from "@/pages/login/login.jsx";
 import RegistPhone from "@/pages/regist-phone/regist-phone.jsx";
 import RegistVerify from "@/pages/regist-verify/regist-verify.jsx";
@@ -31,7 +38,12 @@ class AppUI extends React.Component {
             <div className="App">
                 <Router>
                     <Switch>
-                        <Route path="/" component={Home} exact></Route>
+                        <Route path="/" exact>
+                            <Redirect to="/home" />
+                        </Route>
+                        <Route path="/home" component={Home}></Route>
+                        <Route path="/me" exact component={Me}></Route>
+                        <Route path="/me/info" exact component={MeInfo}></Route>
                         <Route path="/login" component={Login}></Route>
                         <Route
                             path="/regist-phone"

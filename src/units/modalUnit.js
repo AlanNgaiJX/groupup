@@ -38,7 +38,7 @@ export function showToast({
     显示loading
 */
 export function showLoading(args = { title: "loading...", mask: true }) {
-    const {title, mask} = args;
+    const { title, mask } = args;
     Toast.loading(title, 0, null, mask);
 }
 

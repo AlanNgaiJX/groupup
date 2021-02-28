@@ -10,11 +10,9 @@ import "@/units/svgUnit.js";
 import "@/units/uploadFilesUnits.js";
 
 ReactDOM.render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <App />
-        </Provider>
-    </React.StrictMode>,
+    <Provider store={store}>
+        <App />
+    </Provider>,
     document.getElementById("root")
 );
 

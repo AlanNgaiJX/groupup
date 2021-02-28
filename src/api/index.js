@@ -48,6 +48,25 @@ export function uploadImg(args) {
     });
 }
 
+export function getInfoByUserId(args) {
+    return instance.post("/common/getInfoByUserId", {
+        userId: args.userId,
+    });
+}
+
+export function updateUserInfo(args) {
+    const { userId, avatar, background, city, gender, intro, nickName } = args;
+    return instance.post("/common/updateUserInfo", {
+        userId,
+        avatar,
+        background,
+        city,
+        gender,
+        intro,
+        nickName,
+    });
+}
+
 export function getToken() {
     return instance.post("/test/getToken");
 }

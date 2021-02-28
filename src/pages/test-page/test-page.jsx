@@ -28,10 +28,10 @@ class TestPage extends React.Component {
     };
 
     showLoading = () => {
-        modal.showLoading({ title: "hello world" });
-        setTimeout(() => {
-            modal.hideLoading();
-        }, 5000);
+        modal.showLoading();
+        // setTimeout(() => {
+        //     modal.hideLoading();
+        // }, 5000);
     };
 
     showModal = () => {

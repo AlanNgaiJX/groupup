@@ -1,0 +1,22 @@
+.footer-item {
+    flex: 1;
+    height: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 0.24rem;
+
+    &.active {
+        color: #8600ff;
+    }
+
+    &.default{
+        color: #333333
+    }
+
+    .item-icon {
+        height: 0.5rem;
+        width: 0.5rem;
+    }
+}

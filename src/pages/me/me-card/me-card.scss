@@ -1,0 +1,69 @@
+#me-card {
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 1rem 0.3rem 0.3rem 0.3rem;
+    position: relative;
+
+    .avatar-wrap {
+        width: 1.5rem;
+        height: 1.5rem;
+        position: relative;
+    }
+
+    .info {
+        width: 100%;
+        height: 0.8rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .nickName {
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.35rem;
+
+            .gender-icon{
+                width: .35rem;
+                height: .35rem;
+                margin-left: .1rem;
+            }
+        }
+
+        .intro {
+            color: #eeeeee;
+        }
+    }
+
+    .location{
+        position: absolute;
+        right: .5rem;
+        bottom: .5rem;
+        color: #fff;
+        display: flex;
+        align-items: center;
+
+        .location-icon{
+            width: .35rem;
+            height: .35rem;
+            margin-right: .1rem;
+        }
+    }
+
+    .btn-edit {
+        width: 0.44rem;
+        height: 0.44rem;
+        position: absolute;
+        right: .5rem;
+        top: 0.5rem;
+
+        .btn-edit-icon {
+            width: 0.44rem;
+            height: 0.44rem;
+            color: #fff;
+        }
+    }
+}

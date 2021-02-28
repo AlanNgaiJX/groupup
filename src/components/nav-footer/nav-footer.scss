@@ -5,19 +5,5 @@
     height: 1rem;
     display: flex;
     border-top: 1px solid #eeeeee;
-
-    .footer-item {
-        width: 33.33%;
-        height: 1rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        font-size: .24rem;
-        
-        .item-icon {
-            height: 0.5rem;
-            width: 0.5rem;
-        }
-    }
+    background-color: #ffffff;
 }

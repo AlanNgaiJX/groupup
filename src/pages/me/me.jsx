@@ -1,11 +1,14 @@
 import React from "react";
+import MeCard from "./me-card/me-card.jsx";
+import MeTabs from "./me-tabs/me-tabs.jsx";
 import NavFooter from "@/components/nav-footer/nav-footer.jsx";
 
-class Home extends React.Component {
+class Me extends React.Component {
     render() {
         return (
-            <div>
-                Home
+            <div id="page-me">
+                <MeCard></MeCard>
+                <MeTabs></MeTabs>
                 <NavFooter
                     path={this.props.history.location.pathname}
                 ></NavFooter>
@@ -14,4 +17,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+export default Me;
