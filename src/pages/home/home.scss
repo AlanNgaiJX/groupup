@@ -1,0 +1,29 @@
+#home-page {
+    .label-bar {
+        height: 1rem;
+        box-sizing: border-box;
+        padding: 0 0.3rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .label-text {
+            font-size: 0.36rem;
+            font-weight: bold;
+        }
+
+        .right-btn {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .public-group-wrap {
+        .public-groups {
+            .public-groups-item {
+                box-sizing: border-box;
+                padding: 0 0.3rem;
+            }
+        }
+    }
+}

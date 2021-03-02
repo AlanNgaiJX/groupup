@@ -1,15 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
 import classnames from "classnames";
-import { publicEncrypt } from "@/units/utilsUnit.js";
+import { publicEncrypt, getCookie } from "@/units/utilsUnit.js";
+import modal from "@/units/modalUnit.js";
 import * as Api from "@/api/index.js";
 import "./login.scss";
-
+import { updateUserId } from "@/redux/actionCreater.js";
 const mapState = (state) => ({
     publicKey: state.publicKey,
 });
 
-const mapDispatch = {};
+const mapDispatch = {
+    updateUserId,
+};
 
 class LoginUI extends React.Component {
     state = {
@@ -57,15 +60,18 @@ class LoginUI extends React.Component {
             const { publicKey } = this.props;
             const encodePhone = publicEncrypt(publicKey, phoneInput);
             const encodePwd = publicEncrypt(publicKey, pwdInput);
-
+            modal.showLoading();
             Api.loginByPwd({
                 phone: encodePhone,
                 password: encodePwd,
-            }).then(res=>{
-                console.log(res);
-                // if () {
-                    
-                // }
+            }).then((res) => {
+                modal.hideLoading();
+                if (res.data.code === 200) {
+                    this.props.updateUserId(getCookie("userId"));
+                    this.props.history.replace("/me");
+                } else {
+                    modal.showToast({ title: res.data.msg });
+                }
             });
         }
     };

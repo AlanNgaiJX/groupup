@@ -120,7 +120,7 @@ class MeInfo extends React.Component {
         this.setState({
             userId,
         });
-        
+
         modal.showLoading();
         Api.getInfoByUserId({
             userId,
@@ -152,12 +152,6 @@ class MeInfo extends React.Component {
     }
 
     render() {
-        const genderData = [
-            { value: 0, label: "保密" },
-            { value: 1, label: "男" },
-            { value: 2, label: "女" },
-        ];
-
         return (
             <div id="me-info">
                 <div className="navBarWrap">
@@ -203,7 +197,11 @@ class MeInfo extends React.Component {
                 <WhiteSpace />
                 {/* 性别 */}
                 <List renderHeader={() => "性别"}>
-                    {genderData.map((i) => (
+                    {[
+                        { value: 0, label: "保密" },
+                        { value: 1, label: "男" },
+                        { value: 2, label: "女" },
+                    ].map((i) => (
                         <Radio.RadioItem
                             key={i.value}
                             checked={this.state.gender === i.value}

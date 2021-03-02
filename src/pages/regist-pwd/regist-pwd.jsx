@@ -73,7 +73,7 @@ class RegistPwdUI extends React.Component {
                 modal.hideLoading();
                 if (res.data.code === 200) {
                     modal.showToast({ type: "success", title: "注册成功" });
-                    this.props.history.push("/");
+                    this.props.history.push("/login");
                 } else if (res.data.code === 99) {
                     modal.showModal({
                         type: "alert",

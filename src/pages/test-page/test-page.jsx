@@ -129,6 +129,7 @@ class TestPage extends React.Component {
                         onChange={this.selectFiles}
                     />
                 </div>
+                <WhiteSpace />
             </div>
         );
     }

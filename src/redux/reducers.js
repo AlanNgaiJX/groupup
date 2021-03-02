@@ -1,3 +1,5 @@
+import { getCookie } from "@/units/utilsUnit.js";
+
 export function count(state = 0, action) {
     switch (action.type) {
         case "ADD_COUNT":
@@ -27,6 +29,16 @@ export function publicKey(state = "", action) {
     switch (action.type) {
         case "UPDATE_PUBLICKEY":
             return action.publicKey;
+        default:
+            return state;
+    }
+}
+
+const initUserId = getCookie("userId") || "";
+export function userId(state = initUserId, action){
+    switch (action.type) {
+        case "UPDATE_USERID":
+            return action.userId;
         default:
             return state;
     }

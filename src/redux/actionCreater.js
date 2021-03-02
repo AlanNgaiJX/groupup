@@ -16,3 +16,8 @@ export function resetRegistForm() {
 export function updatePublicKey(publicKey) {
     return { type: "UPDATE_PUBLICKEY", publicKey };
 }
+
+/* userId */
+export function updateUserId(userId) {
+    return { type: "UPDATE_USERID", userId };
+}

@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 import { connect } from "react-redux";
 import Home from "@/pages/home/home.jsx";
+import Group from "@/pages/group/group.jsx";
+import CreateGroup from "@/pages/create-group/create-group.jsx";
 import Me from "@/pages/me/me.jsx";
 import MeInfo from "@/pages/me-info/me-info.jsx";
 import Login from "@/pages/login/login.jsx";
@@ -17,6 +19,7 @@ import TestPage from "@/pages/test-page/test-page.jsx";
 import * as Api from "@/api/index.js";
 import "@/App.scss";
 import { updatePublicKey } from "@/redux/actionCreater.js";
+import { getCookie } from "@/units/utilsUnit.js";
 
 const mapState = (state) => ({});
 
@@ -42,6 +45,12 @@ class AppUI extends React.Component {
                             <Redirect to="/home" />
                         </Route>
                         <Route path="/home" component={Home}></Route>
+                        <Route path="/group" component={Group} exact></Route>
+                        <Route
+                            path="/group/create-group"
+                            component={CreateGroup}
+                            exact
+                        ></Route>
                         <Route path="/me" exact component={Me}></Route>
                         <Route path="/me/info" exact component={MeInfo}></Route>
                         <Route path="/login" component={Login}></Route>

@@ -1,3 +1,93 @@
-#group-page{
-    
+#group-page {
+    .label-bar {
+        height: 1rem;
+        box-sizing: border-box;
+        padding: 0 0.3rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .label-text {
+            font-size: 0.36rem;
+            font-weight: bold;
+        }
+
+        .right-btn {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .my-groups-wrap {
+        box-sizing: border-box;
+        padding: 0 0.3rem;
+
+        .my-groups {
+            width: 100%;
+            white-space: nowrap;
+            display: flex;
+            justify-content: flex-start;
+
+            .my-groups-item {
+                width: 1.5rem;
+                height: 1.9rem;
+                text-overflow: ellipsis;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                margin-right: 0.3rem;
+
+                &.empty {
+                    width: 100%;
+                    box-sizing: border-box;
+                    justify-content: center;
+                    align-items: center;
+                    color: #bbbbbb;
+
+                    .empty-icon {
+                        width: 1rem;
+                        height: 1rem;
+                        margin-bottom: 0.2rem;
+                    }
+                }
+
+                .cover-wrap {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                }
+
+                p {
+                    width: 1.5rem;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    .my-part-wrap {
+        .my-parts {
+            .my-parts-item {
+                box-sizing: border-box;
+                padding: 0 0.3rem;
+
+                &.empty {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    box-sizing: border-box;
+                    justify-content: center;
+                    align-items: center;
+                    color: #bbbbbb;
+
+                    .empty-icon {
+                        width: 1rem;
+                        height: 1rem;
+                        margin-bottom: 0.2rem;
+                    }
+                }
+            }
+        }
+    }
 }

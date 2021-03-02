@@ -67,6 +67,70 @@ export function updateUserInfo(args) {
     });
 }
 
+export function createGroup(args) {
+    const {
+        userId,
+        groupName,
+        groupIntro,
+        groupType,
+        groupPassword,
+        groupLocation,
+        groupCover,
+    } = args;
+    return instance.post("/group/createGroup", {
+        userId,
+        groupName,
+        groupIntro,
+        groupType,
+        groupPassword,
+        groupLocation,
+        groupCover,
+    });
+}
+
+export function findGroupsByOwner(args) {
+    return instance.post("/group/findGroupsByOwner", {
+        userId: args.userId,
+    });
+}
+
+export function findPartGroups(args) {
+    return instance.post("/group/findPartGroups", {
+        userId: args.userId,
+    });
+}
+
+export function findPartGroupsId(args) {
+    return instance.post("/group/findPartGroupsId", {
+        userId: args.userId,
+    });
+}
+
+export function findGroupById(args) {
+    return instance.post("/group/findGroupById", {
+        groupId: args.groupId,
+    });
+}
+
+export function findGroupsByIds(args) {
+    return instance.post("/group/findGroupById", {
+        groupIds: args.groupIds,
+    });
+}
+
+export function getAllPublicGroups(args) {
+    return instance.post("/group/getAllPublicGroups", {
+        userId: args.userId,
+    });
+}
+
+export function joinGroup(args) {
+    return instance.post("/group/joinGroup", {
+        userId: args.userId,
+        groupId: args.groupId,
+    });
+}
+
 export function getToken() {
     return instance.post("/test/getToken");
 }
