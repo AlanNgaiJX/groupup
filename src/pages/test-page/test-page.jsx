@@ -1,5 +1,5 @@
 import React from "react";
-import * as Api from "@/api/index.js";
+import Api from "@/api/index.js";
 import modal from "@/units/modalUnit.js";
 
 class TestPage extends React.Component {

@@ -6,7 +6,7 @@ import NavFooter from "@/components/nav-footer/nav-footer.jsx";
 import SquareImg from "@/components/square-img/square-img.jsx";
 import GroupItem from "@/components/group-item/group-item.jsx";
 import SvgIcon from "@/components/svg-icon/svg-icon.js";
-import * as Api from "@/api/index.js";
+import Api from "@/api/index.js";
 import "./group.scss";
 
 const mapState = (state) => ({

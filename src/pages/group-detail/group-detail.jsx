@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import qs from "querystring";
-import * as Api from "@/api/index.js";
+import Api from "@/api/index.js";
 import NavHeader from "./nav-header/nav-header.jsx";
 import GroupCard from "./group-card/group-card.jsx";
 import GroupTabs from "./group-tabs/group-tabs.jsx";

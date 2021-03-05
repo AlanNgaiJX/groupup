@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import MeCard from "./me-card/me-card.jsx";
 import MeTabs from "./me-tabs/me-tabs.jsx";
 import NavFooter from "@/components/nav-footer/nav-footer.jsx";
-import * as Api from "@/api/index.js";
+import Api from "@/api/index.js";
 import modal from "@/units/modalUnit.js";
 
 const mapState = (state) => ({

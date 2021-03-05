@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import classnames from "classnames";
 import SvgIcon from "@/components/svg-icon/svg-icon.js";
 import { publicEncrypt } from "@/units/utilsUnit.js";
-import * as Api from "@/api/index.js";
+import Api from "@/api/index.js";
 import "./regist-pwd.scss";
 import modal from "@/units/modalUnit.js";
 

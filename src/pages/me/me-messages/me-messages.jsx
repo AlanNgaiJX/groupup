@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Message from "./message/message.jsx";
 import SvgIcon from "@/components/svg-icon/svg-icon.js";
-import * as Api from "@/api/index.js";
+import Api from "@/api/index.js";
 import "./me-messages.scss";
 
 class MeMessages extends React.Component {

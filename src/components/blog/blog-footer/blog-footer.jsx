@@ -4,7 +4,7 @@ import moment from "@/units/momentUnit.js";
 import SvgIcon from "@/components/svg-icon/svg-icon.js";
 import CommentList from "./commentList/comment-list.jsx";
 import { TextareaItem } from "antd-mobile";
-import * as Api from "@/api/index.js";
+import Api from "@/api/index.js";
 import modal from "@/units/modalUnit.js";
 import "./blog-footer.scss";
 

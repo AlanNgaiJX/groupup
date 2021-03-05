@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Icon, WhiteSpace, NavBar } from "antd-mobile";
 import SvgIcon from "@/components/svg-icon/svg-icon.js";
 import GroupItem from "@/components/group-item/group-item.jsx";
-import * as Api from "@/api/index.js";
+import Api from "@/api/index.js";
 import modal from "@/units/modalUnit.js";
 import "./my-group.scss";
 

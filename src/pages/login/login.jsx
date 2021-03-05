@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import classnames from "classnames";
 import { publicEncrypt, getCookie } from "@/units/utilsUnit.js";
 import modal from "@/units/modalUnit.js";
-import * as Api from "@/api/index.js";
+import Api from "@/api/index.js";
 import "./login.scss";
 import { updateUserId } from "@/redux/actionCreater.js";
 const mapState = (state) => ({

@@ -20,7 +20,7 @@ import RegistVerify from "@/pages/regist-verify/regist-verify.jsx";
 import RegistPwd from "@/pages/regist-pwd/regist-pwd.jsx";
 import ImageViewer from "@/components/image-viewer/image-viewer.jsx";
 import TestPage from "@/pages/test-page/test-page.jsx";
-import * as Api from "@/api/index.js";
+import Api from "@/api/index.js";
 import "@/App.scss";
 import { updatePublicKey } from "@/redux/actionCreater.js";
 

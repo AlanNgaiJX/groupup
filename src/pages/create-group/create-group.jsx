@@ -14,7 +14,7 @@ import {
     ImagePicker,
 } from "antd-mobile";
 import modal from "@/units/modalUnit.js";
-import * as Api from "@/api/index.js";
+import Api from "@/api/index.js";
 const mapState = (state) => ({
     userId: state.userId,
 });

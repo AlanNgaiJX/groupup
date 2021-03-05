@@ -12,7 +12,7 @@ import {
     Picker,
 } from "antd-mobile";
 import "./me-info.scss";
-import * as Api from "@/api/index.js";
+import Api from "@/api/index.js";
 import modal from "@/units/modalUnit.js";
 
 class MeInfo extends React.Component {
