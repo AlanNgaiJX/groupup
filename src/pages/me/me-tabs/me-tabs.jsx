@@ -1,13 +1,21 @@
 import React from "react";
-import { Tabs, WhiteSpace } from "antd-mobile";
+import { Tabs } from "antd-mobile";
 import { StickyContainer, Sticky } from "react-sticky";
+import MeBlogs from "../me-blogs/me-blogs.jsx";
+import MeMessages from "../me-messages/me-messages.jsx";
+
 import "./me-tabs.scss";
 
 function renderTabBar(props) {
     return (
         <Sticky>
             {({ style }) => (
-                <div style={{ ...style, zIndex: 1 }}>
+                <div
+                    style={{
+                        ...style,
+                        zIndex: 1,
+                    }}
+                >
                     <Tabs.DefaultTabBar {...props} />
                 </div>
             )}
@@ -15,25 +23,44 @@ function renderTabBar(props) {
     );
 }
 
-const tabs = [
-    { title: "我的足迹", key: "t1" },
-    { title: "消息", key: "t2" },
-];
-
 class MeNav extends React.Component {
+    componentDidMount() {}
+
     render() {
+        const {
+            myBlogs,
+            myBlogsLoading,
+            myMessages,
+            myMessagesLoading,
+        } = this.props;
         return (
             <div id="me-tabs">
                 <StickyContainer>
                     <Tabs
-                        tabs={tabs}
-                        initialPage={"t1"}
+                        tabs={[
+                            { title: "我的足迹", sub: "t1" },
+                            { title: "消息", sub: "t2" },
+                        ]}
+                        initialPage={0}
                         renderTabBar={renderTabBar}
-                    ></Tabs>
-
-                    {Array.apply(null, { length: 100 }).map((item, index) => (
-                        <WhiteSpace key={index} />
-                    ))}
+                        swipeable={false}
+                    >
+                        {/* blogs */}
+                        <div>
+                            {myBlogsLoading ? (
+                                ""
+                            ) : (
+                                <MeBlogs blogs={myBlogs}></MeBlogs>
+                            )}
+                        </div>
+                        <div>
+                            {myMessagesLoading ? (
+                                ""
+                            ) : (
+                                <MeMessages messages={myMessages}></MeMessages>
+                            )}
+                        </div>
+                    </Tabs>
                 </StickyContainer>
             </div>
         );

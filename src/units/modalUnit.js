@@ -9,7 +9,7 @@ import { Toast, Modal } from "antd-mobile";
         mask: true | false
     }
 */
-export function showToast({
+function showToast({
     type = "default",
     title,
     duration = 1,
@@ -37,7 +37,7 @@ export function showToast({
 /* 
     显示loading
 */
-export function showLoading(args = { title: "loading...", mask: true }) {
+function showLoading(args = { title: "loading...", mask: true }) {
     const { title, mask } = args;
     Toast.loading(title, 0, null, mask);
 }
@@ -45,11 +45,11 @@ export function showLoading(args = { title: "loading...", mask: true }) {
 /* 
     隐藏loading
 */
-export function hideLoading() {
+function hideLoading() {
     Toast.hide();
 }
 
-export function showModal({
+function showModal({
     title,
     content,
     type = "confirm",
@@ -91,9 +91,11 @@ export function showModal({
     Modal.alert(title, content, actions);
 }
 
-export default {
+const modal = {
     showToast,
     showLoading,
     hideLoading,
     showModal,
 };
+
+export default modal;

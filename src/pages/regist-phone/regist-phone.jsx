@@ -71,6 +71,7 @@ class RegistPhoneUI extends React.Component {
                             <input
                                 placeholder="请输入手机号码"
                                 value={phone}
+                                type="tel"
                                 onChange={this.handlePhoneInput()}
                             />
                         </div>

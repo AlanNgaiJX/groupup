@@ -600,6 +600,7 @@ function getUploadPath(photo) {
 }
 
 //处理文件名
+ //eslint-disable-next-line
 function convertFileName(photo) {
     var fileName = photo.file.name.replace(/\$/g, ""); //过滤$符号
 

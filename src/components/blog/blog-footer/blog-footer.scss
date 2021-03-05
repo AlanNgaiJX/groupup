@@ -1,0 +1,79 @@
+.blog-footer {
+    margin-top: 0.4rem;
+    display: flex;
+    flex-direction: column;
+
+    .blog-option {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        .time {
+            color: #8a8a8a;
+            font-size: 0.26rem;
+        }
+
+        .option-groups {
+            display: flex;
+            width: 1.6rem;
+            justify-content: space-between;
+            justify-content: flex-end;
+
+            .option-item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .icon {
+                    width: 0.4rem;
+                    height: 0.4rem;
+                    color: #d5d5d5;
+                    margin-right: 0.1rem;
+                }
+
+                .count {
+                    color: #919191;
+                }
+            }
+        }
+    }
+
+    .comment-form {
+        width: 100%;
+        margin-top: 0.3rem;
+        display: flex;
+        flex-direction: column;
+
+        .comment-input {
+            border: 1px solid #cdcdcd6f;
+            border-radius: 0.1rem;
+            overflow: hidden;
+        }
+
+        .btn-group {
+            margin-top: 0.2rem;
+            display: flex;
+            align-items: center;
+            align-self: flex-end;
+
+            .btn {
+                width: 1rem;
+                height: 0.44rem;
+                font-size: 0.26rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .btn-cancle {
+                color: #bbbbbb;
+            }
+
+            .btn-submit {
+                color: #ffffff;
+                background-color: #838383aa;
+            }
+        }
+    }
+}

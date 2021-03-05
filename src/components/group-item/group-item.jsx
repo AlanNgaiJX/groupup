@@ -1,19 +1,25 @@
 import React from "react";
+import { withRouter } from "react-router";
 import SquareImg from "@/components/square-img/square-img.jsx";
 import SvgIcon from "@/components/svg-icon/svg-icon.js";
 import "./group-item.scss";
 
 class GroupItem extends React.Component {
-
-    handleJoinGroup = (groupId) => {
+    handleJoinGroup = (groupId) => (e) => {
+        e.stopPropagation();
         const { joinGroup } = this.props;
-        joinGroup && typeof joinGroup === "function" && joinGroup(groupId);
+        joinGroup && (typeof joinGroup === "function") && joinGroup(groupId);
+    };
+
+    toDetail = () => {
+        const { group } = this.props;
+        this.props.history.push(`/group-detail?groupId=${group._id}`);
     };
 
     render() {
         const { group } = this.props;
         return (
-            <div className="group-item">
+            <div className="group-item" onClick={this.toDetail}>
                 <div className="group-item-main">
                     <div className="group-item-info">
                         <div className="cover">
@@ -49,10 +55,10 @@ class GroupItem extends React.Component {
                         )}
                     </div>
                 </div>
-                {group.GroupBlogs.length ? (
+                {group.groupBlogs.length ? (
                     <div className="summary-blogs-wrap">
                         <ul className="summary-blogs">
-                            {group.GroupBlogs.slice(0, 2).map((item) => {
+                            {group.groupBlogs.slice(0, 2).map((item) => {
                                 return (
                                     <li
                                         className="summary-blog-item"
@@ -79,4 +85,4 @@ class GroupItem extends React.Component {
     }
 }
 
-export default GroupItem;
+export default withRouter(GroupItem);

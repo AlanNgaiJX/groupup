@@ -8,18 +8,21 @@ import {
 import { connect } from "react-redux";
 import Home from "@/pages/home/home.jsx";
 import Group from "@/pages/group/group.jsx";
+import MyGroup from "@/pages/my-group/my-group.jsx";
 import CreateGroup from "@/pages/create-group/create-group.jsx";
+import GroupDetail from "@/pages/group-detail/group-detail.jsx";
+import CreateBlog from "@/pages/create-blog/create-blog.jsx";
 import Me from "@/pages/me/me.jsx";
 import MeInfo from "@/pages/me-info/me-info.jsx";
 import Login from "@/pages/login/login.jsx";
 import RegistPhone from "@/pages/regist-phone/regist-phone.jsx";
 import RegistVerify from "@/pages/regist-verify/regist-verify.jsx";
 import RegistPwd from "@/pages/regist-pwd/regist-pwd.jsx";
+import ImageViewer from "@/components/image-viewer/image-viewer.jsx";
 import TestPage from "@/pages/test-page/test-page.jsx";
 import * as Api from "@/api/index.js";
 import "@/App.scss";
 import { updatePublicKey } from "@/redux/actionCreater.js";
-import { getCookie } from "@/units/utilsUnit.js";
 
 const mapState = (state) => ({});
 
@@ -36,9 +39,17 @@ class AppUI extends React.Component {
             }
         });
     }
+
+    componentWillUnmount = () => {
+        this.setState = () => {
+            return;
+        };
+    };
+
     render() {
         return (
             <div className="App">
+                <ImageViewer />
                 <Router>
                     <Switch>
                         <Route path="/" exact>
@@ -47,8 +58,23 @@ class AppUI extends React.Component {
                         <Route path="/home" component={Home}></Route>
                         <Route path="/group" component={Group} exact></Route>
                         <Route
+                            path="/group/my-group"
+                            component={MyGroup}
+                            exact
+                        ></Route>
+                        <Route
                             path="/group/create-group"
                             component={CreateGroup}
+                            exact
+                        ></Route>
+                        <Route
+                            path="/group-detail"
+                            component={GroupDetail}
+                            exact
+                        ></Route>
+                        <Route
+                            path="/create-blog"
+                            component={CreateBlog}
                             exact
                         ></Route>
                         <Route path="/me" exact component={Me}></Route>

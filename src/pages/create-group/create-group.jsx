@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import "./create-group.scss";
 import {
     NavBar,
@@ -14,9 +15,12 @@ import {
 } from "antd-mobile";
 import modal from "@/units/modalUnit.js";
 import * as Api from "@/api/index.js";
-const userId = "603662756f354a14a47a7a20";
+const mapState = (state) => ({
+    userId: state.userId,
+});
+const mapDispatch = {};
 
-class CreateGroup extends React.Component {
+class CreateGroupUI extends React.Component {
     state = {
         groupNameError: false,
         groupPasswordError: false,
@@ -89,6 +93,7 @@ class CreateGroup extends React.Component {
     };
 
     submit = () => {
+        const { userId } = this.props;
         const {
             groupNameError,
             groupPasswordError,
@@ -131,11 +136,17 @@ class CreateGroup extends React.Component {
                 }).then((res) => {
                     modal.hideLoading();
                     if (res.data.code === 200) {
-                        modal.showToast({ title: "创建成功" });
+                        this.goBack()   
                     }
                 });
             },
         });
+    };
+
+    componentWillUnmount = () => {
+        this.setState = () => {
+            return;
+        };
     };
 
     render() {
@@ -156,17 +167,7 @@ class CreateGroup extends React.Component {
                 <WhiteSpace />
                 <WhiteSpace />
                 <WhiteSpace />
-
-                {/* 
-                 userId,
-                groupName,
-                groupIntro,
-                groupType,
-                groupPassword,
-                groupLocation,
-                groupCover
-                */}
-
+                
                 {/* 群组名称 */}
                 <List renderHeader={() => "群组名称，（限20字符）"}>
                     <InputItem
@@ -286,4 +287,6 @@ class CreateGroup extends React.Component {
     }
 }
 
-export default CreateGroup;
+const CreateGroupContainer = connect(mapState, mapDispatch)(CreateGroupUI);
+
+export default CreateGroupContainer;

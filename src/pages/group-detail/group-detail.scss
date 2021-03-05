@@ -1,0 +1,22 @@
+#group-detail {
+    position: relative;
+
+    .btn-publish {
+        position: fixed;
+        bottom: 1rem;
+        right: 0.5rem;
+        width: 1rem;
+        height: 1rem;
+        background-color: #33333387;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+
+        .btn-publish-icon {
+            width: .55rem;
+            height: .55rem;
+            color: #ffffff;
+        }
+    }
+}

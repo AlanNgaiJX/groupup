@@ -1,0 +1,32 @@
+.message {
+    margin-top: 0.2rem;
+
+    .message-wrap {
+        height: 1.8rem;
+        border-radius: .1rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        box-sizing: border-box;
+        padding: .3rem;
+
+        .content{
+            font-size: .26rem;
+            color: #575757;
+        }
+
+        .status{
+            width: .2rem;
+            height: .2rem;
+            border-radius: 100%;
+            margin-left: 2rem;
+            background-color: orange;
+        }
+
+        .time{
+            width: 100%;
+            margin-top: .1rem;
+            color: #9f9f9f;
+        }
+    }
+}

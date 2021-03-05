@@ -1,0 +1,49 @@
+.blog {
+    display: flex;
+    width: 100%;
+    position: relative;
+    padding-top: .3rem;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid #eeeeeea8;
+
+    .left-avatar {
+        width: 1.2rem;
+        display: flex;
+        justify-content: center;
+
+        .avatar-wrap {
+            width: 0.8rem;
+            height: 0.8rem;
+            position: relative;
+        }
+    }
+
+    .right-main {
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        padding-left: .25rem;
+        flex: 1;
+
+        .nickName {
+            color: #555C7F;
+            font-size: .32rem;
+        }
+
+        .blogContent {
+            margin-top: .1rem;
+        }
+
+        .blog-footer{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: .4rem;
+
+            .time{
+                color: #8a8a8a;
+                font-size: .26rem;
+            }
+        }
+    }
+}

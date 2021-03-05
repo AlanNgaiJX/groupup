@@ -1,0 +1,49 @@
+.comment-list {
+    background-color: #eeeeee9c;
+    padding: 0.3rem 0.2rem;
+    width: 100%;
+    margin-top: 0.3rem;
+    border-radius: 0.1rem;
+
+    .comment-item {
+        display: flex;
+        margin-bottom: 0.1rem;
+        padding-bottom: 0.2rem;
+
+        .comment-avatar {
+            height: 0.55rem;
+            width: 0.55rem;
+            position: relative;
+            margin-right: 0.15rem;
+        }
+
+        .comment-info {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+            .comment-nickname {
+                color: #555c7f;
+                font-size: 0.28rem;
+            }
+
+            .comment-content {
+                margin-top: 0.1rem;
+                font-size: 0.26rem;
+            }
+
+            .comment-time {
+                align-self: flex-end;
+                margin-top: 0.2rem;
+                color: #8a8a8a;
+            }
+        }
+    }
+}
+
+.needFoldUp {
+    margin-top: 0.15rem;
+    font-size: 0.28rem;
+    color: #5e678f;
+    width: 100%;
+}

@@ -1,0 +1,53 @@
+#my-group-page {
+    .navBarWrap{
+        position: fixed;
+        width: 100%;
+        z-index: 2;
+        top: 0;
+    }
+
+    .label-bar {
+        height: 1rem;
+        box-sizing: border-box;
+        padding: 0 0.3rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: .8rem;
+
+        .label-text {
+            font-size: 0.36rem;
+            font-weight: bold;
+        }
+
+        .right-btn {
+            display: flex;
+            align-items: center;
+        }
+    }
+    
+    .my-group-wrap {
+        .my-groups {
+            .my-groups-item {
+                box-sizing: border-box;
+                padding: 0 0.3rem;
+
+                &.empty {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    box-sizing: border-box;
+                    justify-content: center;
+                    align-items: center;
+                    color: #bbbbbb;
+
+                    .empty-icon {
+                        width: 1rem;
+                        height: 1rem;
+                        margin-bottom: 0.2rem;
+                    }
+                }
+            }
+        }
+    }
+}

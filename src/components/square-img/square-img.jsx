@@ -9,41 +9,62 @@ class SquareImg extends React.Component {
 
     onLoad = (e) => {
         const { clientWidth, clientHeight } = e.target;
+        const { full } = this.props;
         const {
             clientWidth: parentWidth,
             clientHeight: parentHeight,
         } = e.target.parentNode;
         const ratio = clientWidth / clientHeight;
         const imgStyle = {};
-        if (clientWidth >= clientHeight) {
-            imgStyle.height = "100%";
-            imgStyle.transform = `translateX(${
-                -(ratio * parentHeight - parentWidth) / 2
-            }px)`;
-        } else {
-            imgStyle.width = "100%";
-            imgStyle.transform = `translateY(${
-                -(parentWidth / ratio - parentHeight) / 2
-            }px)`;
-        }
 
+        // full模式
+        if (full) {
+            if (clientWidth >= clientHeight) {
+                imgStyle.width = "100%";
+                imgStyle.transform = `translateY(25%)`;
+            } else {
+                imgStyle.height = "100%";
+                imgStyle.transform = `translateX(25%)`;
+            }
+        } else {
+            if (clientWidth >= clientHeight) {
+                imgStyle.height = "100%";
+                imgStyle.transform = `translateX(${
+                    -(ratio * parentHeight - parentWidth) / 2
+                }px)`;
+            } else {
+                imgStyle.width = "100%";
+                imgStyle.transform = `translateY(${
+                    -(parentWidth / ratio - parentHeight) / 2
+                }px)`;
+            }
+        }
+        
         this.setState({
             loading: false,
             imgStyle,
         });
+
+        this.props.onLoad &&
+            typeof this.props.onLoad === "function" &&
+            this.props.onLoad();
     };
 
     render() {
         const { loading, imgStyle } = this.state;
-        const src = this.props.host
-            ? host + this.props.src
-            : this.props.src;
+        const src = this.props.host ? host + this.props.src : this.props.src;
+        const index = this.props.index || 0;
         return (
-            <div className="square-img">
+            <div
+                className="square-img"
+                style={{ borderRadius: this.props.round ? "5%" : "0%", backgroundColor: this.props.bgc }}
+                data-index={index}
+            >
                 {loading && <div className="is-loading"></div>}
                 <img
                     src={src}
                     onLoad={this.onLoad}
+                    data-index={index}
                     style={
                         loading
                             ? {
@@ -52,9 +73,9 @@ class SquareImg extends React.Component {
                             : {
                                   opacity: 1,
                                   ...imgStyle,
-                                  borderRadius: this.props.round ? "10%" : "0%",
                               }
                     }
+                    alt=""
                 />
             </div>
         );

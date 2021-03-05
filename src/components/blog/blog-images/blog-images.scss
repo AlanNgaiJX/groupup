@@ -1,0 +1,48 @@
+.blogImages {
+    position: relative;
+    width: 100%;
+    margin-top: 0.2rem;
+
+    &.format1 {
+        display: flex;
+        width: 80%;
+
+        .imageWrap {
+            width: 100%;
+        }
+    }
+
+    &.format2 {
+        display: flex;
+        width: 90%;
+
+        .imageWrap {
+            width: 50%;
+            box-sizing: border-box;
+            padding: 0.05rem;
+        }
+    }
+
+    &.format3 {
+        display: flex;
+        width: 100%;
+
+        .imageWrap {
+            width: 33.33%;
+            box-sizing: border-box;
+            padding: 0.05rem;
+        }
+    }
+
+    &.format4 {
+        display: flex;
+        flex-wrap: wrap;
+        width: 60%;
+
+        .imageWrap {
+            width: 50%;
+            box-sizing: border-box;
+            padding: 0.05rem;
+        }
+    }
+}

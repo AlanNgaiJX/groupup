@@ -106,6 +106,12 @@ class RegistPwdUI extends React.Component {
         }
     }
 
+    componentWillUnmount = () => {
+        this.setState = () => {
+            return;
+        };
+    };
+
     render() {
         const { password } = this.props.registForm;
         const canSubmit = this.checkCanSubmit();

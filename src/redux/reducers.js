@@ -35,10 +35,28 @@ export function publicKey(state = "", action) {
 }
 
 const initUserId = getCookie("userId") || "";
-export function userId(state = initUserId, action){
+export function userId(state = initUserId, action) {
     switch (action.type) {
         case "UPDATE_USERID":
             return action.userId;
+        default:
+            return state;
+    }
+}
+
+export function imageViewerOn(state = false, action) {
+    switch (action.type) {
+        case "UPDATE_IMAGE_VEIWER_ON":
+            return action.imageViewerOn;
+        default:
+            return state;
+    }
+}
+
+export function imageViewerList(state = [], action) {
+    switch (action.type) {
+        case "UPDATE_IMAGE_VEIWER_LIST":
+            return action.imageViewerList;
         default:
             return state;
     }

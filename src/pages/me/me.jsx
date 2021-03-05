@@ -23,7 +23,14 @@ class MeUI extends React.Component {
             background: "",
             city: "",
         },
+
+        myBlogs: [],
+        myBlogsLoading: true,
+
+        myMessages: [],
+        myMessagesLoading: true,
     };
+
     componentDidMount() {
         document.documentElement.scrollTop = 0;
         const userId = this.props.userId;
@@ -52,19 +59,56 @@ class MeUI extends React.Component {
                 this.setState({
                     userInfo,
                 });
-            } else {
-                modal.showToast({ title: res.data.msg });
+            }
+        });
+
+        Api.getAllBlogsByUserId({
+            userId: userId,
+        }).then((res) => {
+            if (res.data.code === 200) {
+                this.setState({
+                    myBlogs: res.data.data,
+                    myBlogsLoading: false,
+                });
+            }
+        });
+
+        Api.getAllMessageByUserId({
+            userId,
+        }).then((res) => {
+            if (res.data.code === 200) {
+                this.setState({
+                    myMessages: res.data.data,
+                    myMessagesLoading: false,
+                });
             }
         });
     }
 
+    componentWillUnmount = () => {
+        this.setState = () => {
+            return;
+        };
+    };
+
     render() {
-        const { userInfo } = this.state;
+        const {
+            userInfo,
+            myBlogs,
+            myBlogsLoading,
+            myMessages,
+            myMessagesLoading,
+        } = this.state;
         const { userId } = this.props;
         return (
             <div id="page-me">
                 <MeCard userInfo={userInfo} userId={userId}></MeCard>
-                <MeTabs></MeTabs>
+                <MeTabs
+                    myBlogs={myBlogs}
+                    myBlogsLoading={myBlogsLoading}
+                    myMessages={myMessages}
+                    myMessagesLoading={myMessagesLoading}
+                ></MeTabs>
                 <NavFooter
                     path={this.props.history.location.pathname}
                 ></NavFooter>

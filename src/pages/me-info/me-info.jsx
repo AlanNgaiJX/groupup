@@ -151,6 +151,12 @@ class MeInfo extends React.Component {
         });
     }
 
+    componentWillUnmount = () => {
+        this.setState = () => {
+            return;
+        };
+    };
+
     render() {
         return (
             <div id="me-info">

@@ -1,0 +1,25 @@
+.image-viewer-inner {
+    background-color: rgba(0, 0, 0, 0.776);
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .btn-close {
+        width: 0.8rem;
+        height: 0.8rem;
+        position: absolute;
+        right: .5rem;
+        top: .5rem;
+        opacity: .5;
+    }
+
+    .imgs-wrap {
+        width: 100%;
+        height: 0;
+        padding-bottom: 100%;
+    }
+}

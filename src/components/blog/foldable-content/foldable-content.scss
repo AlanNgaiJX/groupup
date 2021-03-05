@@ -1,0 +1,22 @@
+.foldable-content {
+    line-height: .38rem;
+    font-size: .28rem;
+
+    .folded {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5; // 控制行数
+    }
+
+    .fold {
+    }
+
+    .needFoldUp{
+        margin-top: .15rem;
+        font-size: .3rem;
+        color: #5e678f;
+    }
+}

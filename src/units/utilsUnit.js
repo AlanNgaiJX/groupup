@@ -46,3 +46,17 @@ export function delCookie(name) {
     if (cval != null)
         document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
 }
+
+// 获取图片的完整地址
+export function getFullSrc(partSrc) {
+    const host = "http://127.0.0.1:1996/";
+    return host + partSrc;
+}
+
+// rem转px，注意使用时机（当网页加载出字体大小时）
+export function remToPx(remSize) {
+    var baseFontSize = parseFloat(
+        document.documentElement.style.fontSize.slice(0, -2)
+    );
+    return remSize * baseFontSize;
+}

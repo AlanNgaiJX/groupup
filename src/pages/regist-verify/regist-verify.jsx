@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import SvgIcon from "@/components/svg-icon/svg-icon.js";
-import { showLoading, hideLoading } from "@/units/modalUnit.js";
+import modal from "@/units/modalUnit.js";
 import "./regist-verify.scss";
 
 import { updateRegistForm, resetRegistForm } from "@/redux/actionCreater.js";
@@ -94,9 +94,9 @@ class RegistVerifyUI extends React.Component {
     };
 
     nextStep = () => {
-        showLoading({});
+        modal.showLoading({});
         setTimeout(() => {
-            hideLoading();
+            modal.hideLoading();
             this.props.history.replace("/regist-pwd");
         }, 2000);
     };
@@ -169,7 +169,7 @@ class RegistVerifyUI extends React.Component {
                                     })}
                                 </ul>
                                 <input
-                                    type="number"
+                                    type="tel"
                                     value={vcode}
                                     onFocus={this.handleFocusInput}
                                     onBlur={this.handleBlurInput}

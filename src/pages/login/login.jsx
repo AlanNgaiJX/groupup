@@ -76,6 +76,12 @@ class LoginUI extends React.Component {
         }
     };
 
+    componentWillUnmount = () => {
+        this.setState = () => {
+            return;
+        };
+    };
+
     render() {
         const { phoneInput, pwdInput } = this.state;
         const canSubmit = this.checkCanSubmit();
@@ -92,7 +98,7 @@ class LoginUI extends React.Component {
                         <div className="input-wrap">
                             <div className="area-code">+86</div>
                             <input
-                                type="number"
+                                type="tel"
                                 placeholder="请输入手机号码"
                                 value={phoneInput}
                                 onChange={this.handlePhoneInput()}

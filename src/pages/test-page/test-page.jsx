@@ -1,7 +1,6 @@
 import React from "react";
 import * as Api from "@/api/index.js";
 import modal from "@/units/modalUnit.js";
-import { WhiteSpace } from "antd-mobile";
 
 class TestPage extends React.Component {
     state = {
@@ -100,7 +99,6 @@ class TestPage extends React.Component {
     };
 
     render() {
-        const { fileName } = this.state;
         return (
             <div>
                 <button onClick={this.clickGetToken}>getToken</button>
@@ -108,28 +106,6 @@ class TestPage extends React.Component {
                 <button onClick={this.showToast}>showToast</button>
                 <button onClick={this.showLoading}>showLoading</button>
                 <button onClick={this.showModal}>showModal</button>
-                <WhiteSpace />
-                <div className="form">
-                    <input
-                        type="text"
-                        value={fileName}
-                        onChange={this.fileNameChnage}
-                    />
-                    <input type="file" onChange={this.fileChange} />
-                    <button onClick={this.submit}>提交</button>
-                </div>
-                <WhiteSpace />
-                <div>
-                    <button onClick={this.select}>选择</button>
-                    <input
-                        ref={this.fileInput}
-                        type="file"
-                        style={{ opacity: 0 }}
-                        accept="image/*"
-                        onChange={this.selectFiles}
-                    />
-                </div>
-                <WhiteSpace />
             </div>
         );
     }

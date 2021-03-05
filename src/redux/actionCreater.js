@@ -21,3 +21,13 @@ export function updatePublicKey(publicKey) {
 export function updateUserId(userId) {
     return { type: "UPDATE_USERID", userId };
 }
+
+/* imageViewerOn */
+export function updateImageViewerOn(imageViewerOn) {
+    return { type: "UPDATE_IMAGE_VEIWER_ON", imageViewerOn };
+}
+
+/* imageViewerList */
+export function updateImageViewerList(imageViewerList) {
+    return { type: "UPDATE_IMAGE_VEIWER_LIST", imageViewerList };
+}
