@@ -34,7 +34,7 @@ uploader.CreateFile = function (args) {
     uploader.onProgress = args.onProgress; //进度事件
     uploader.onGlobalSpeed = args.onGlobalSpeed; //全局速度事件
     uploader.onComputedMD5 = args.onComputedMD5; //计算md5完成
-
+    uploader.userId = args.userId;
     uploader.uploading = true;
 
     let i = 0;

@@ -121,6 +121,7 @@ class CreateGroupUI extends React.Component {
         window.uploader.CreateFile({
             files: files.map((item) => item.file),
             salt: userId,
+            userId,
             onSuccess: ({ photo }) => {
                 const groupCover = photo.src;
                 modal.hideLoading();

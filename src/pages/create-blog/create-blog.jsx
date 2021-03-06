@@ -57,6 +57,7 @@ class CreateBlogUI extends React.Component {
             window.uploader.CreateFile({
                 files: files.map((item) => item.file),
                 salt: userId,
+                userId,
                 onSuccess: ({ photo }) => {
                     modal.hideLoading();
                     blogImages.push(photo.id);
