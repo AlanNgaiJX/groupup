@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+#### Groupup
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+一个以讨论组为载体的社交应用，开放用户注册、登录，创建群组，发布群组动态，进行动态评论等功能。
 
-## Available Scripts
+#### Demo预览
 
-In the project directory, you can run:
+[预览链接](http://18.162.113.209:9001/groupup/)
 
-### `yarn start`
+或扫描QRcode
+![image](https://github.com/AlanNgaiJX/groupup/blob/master/onlineQRcode.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* ps：预览服务器身处中国境外，走的国际带宽；如果您是中国的访问者，这可能会有点慢，请谅解。
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### 平台
 
-### `yarn test`
+移动web端，spa应用，已针对微信h5、Google、x5等主流浏览器作出适配与优化
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### 前端所使用技术栈
+* 架构：MVVM
+* 基础框架：react + redux + react-router
+* 引用UI：ant-design-mobile
+* 其他依赖：exif（获取图片exif信息），crypto（加解密与传输），aixos，moment..等
 
-### `yarn build`
+#### 已实现
+* 注册、登录
+* 主页、群组页、个人页
+* 创建群组、发布动态、点赞与评论
+等13个核心页面及功能模块。
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### 已调优
+* 图片懒加载
+* 路由懒加载
+* 构建分包
+* 重要信息对称加密传输
+* gzip压缩
+* 静态资源缓存
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### 后端
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+后端是一个express + mongoose + mongodb 的node应用，详见[myServer](https://github.com/AlanNgaiJX/myServer)
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### 前端部署
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* 开发环境
+```
+yarn run start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* build
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+yarn run build
+```
 
-## Learn More
+* build with no srouce-map，构建时shake掉sourcemap
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+yarn run build-no-sourcemap
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* check source-map-explorer，查看构建依赖与包体积（须有source-map）
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+yarn run analyze
+```
