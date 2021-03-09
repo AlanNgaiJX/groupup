@@ -9,24 +9,34 @@ class NavHeader extends React.Component {
     state = {
         showNavSum: false,
     };
-    
+
     clickLeft = () => {
-        this.props.history.goBack();
+        this.props.history.go(-1);
+    };
+
+    onScroll = (e) => {
+        if (document.documentElement.scrollTop > remToPx(3.5)) {
+            this.setState({
+                showNavSum: true,
+            });
+        } else {
+            this.setState({
+                showNavSum: false,
+            });
+        }
     };
 
     componentDidMount() {
-        window.addEventListener("scroll", (e) => {
-            if (document.documentElement.scrollTop > remToPx(3.5)) {
-                this.setState({
-                    showNavSum: true,
-                });
-            } else {
-                this.setState({
-                    showNavSum: false,
-                });
-            }
-        });
+        window.addEventListener("scroll", this.onScroll);
     }
+
+    componentWillUnmount = () => {
+        window.removeEventListener("scroll", this.onScroll);
+        this.setState = () => {
+            return;
+        };
+    };
+
     render() {
         const { group, bgc } = this.props;
         const { showNavSum } = this.state;

@@ -10,7 +10,7 @@ export function count(state = 0, action) {
 }
 
 const initRegistForm = {
-    phone: "18122803695",
+    phone: "",
     vcode: "",
     password: "",
 };
@@ -34,7 +34,7 @@ export function publicKey(state = "", action) {
     }
 }
 
-const initUserId = getCookie("userId") || "";
+const initUserId = getCookie("userId");
 export function userId(state = initUserId, action) {
     switch (action.type) {
         case "UPDATE_USERID":
@@ -57,6 +57,33 @@ export function imageViewerList(state = [], action) {
     switch (action.type) {
         case "UPDATE_IMAGE_VEIWER_LIST":
             return action.imageViewerList;
+        default:
+            return state;
+    }
+}
+
+export function refreshHome(state = false, action) {
+    switch (action.type) {
+        case "UPDATE_REFRESHHOME":
+            return action.refreshHome;
+        default:
+            return state;
+    }
+}
+
+export function refreshGroup(state = false, action) {
+    switch (action.type) {
+        case "UPDATE_REFRESHGROUP":
+            return action.refreshGroup;
+        default:
+            return state;
+    }
+}
+
+export function refreshMe(state = false, action) {
+    switch (action.type) {
+        case "UPDATE_REFRESHME":
+            return action.refreshMe;
         default:
             return state;
     }

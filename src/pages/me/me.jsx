@@ -5,12 +5,16 @@ import MeTabs from "./me-tabs/me-tabs.jsx";
 import NavFooter from "@/components/nav-footer/nav-footer.jsx";
 import Api from "@/api/index.js";
 import modal from "@/units/modalUnit.js";
-
+import { delCookie } from "@/units/utilsUnit.js";
+import { dropByCacheKey } from 'react-router-cache-route'
+import {updateUserId} from "@/redux/actionCreater.js";
 const mapState = (state) => ({
     userId: state.userId,
 });
 
-const mapDispatch = {};
+const mapDispatch = {
+    updateUserId
+};
 
 class MeUI extends React.Component {
     state = {
@@ -31,8 +35,7 @@ class MeUI extends React.Component {
         myMessagesLoading: true,
     };
 
-    componentDidMount() {
-        document.documentElement.scrollTop = 0;
+    fetchData = () => {
         const userId = this.props.userId;
         Api.getInfoByUserId({ userId }).then((res) => {
             if (res.data.code === 200) {
@@ -83,6 +86,21 @@ class MeUI extends React.Component {
                 });
             }
         });
+    };
+
+    logout = () => {
+        delCookie("userId");
+        delCookie("token");
+        dropByCacheKey("home");
+        dropByCacheKey("group");
+        dropByCacheKey("me");
+        this.props.updateUserId("");
+        this.props.history.replace("/login");
+    };
+
+    componentDidMount() {
+        document.documentElement.scrollTop = 0;
+        this.fetchData();
     }
 
     componentWillUnmount = () => {
@@ -102,7 +120,11 @@ class MeUI extends React.Component {
         const { userId } = this.props;
         return (
             <div id="page-me">
-                <MeCard userInfo={userInfo} userId={userId}></MeCard>
+                <MeCard
+                    userInfo={userInfo}
+                    userId={userId}
+                    logout={this.logout}
+                ></MeCard>
                 <MeTabs
                     myBlogs={myBlogs}
                     myBlogsLoading={myBlogsLoading}

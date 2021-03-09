@@ -25,22 +25,11 @@ class ImageViewerUI extends React.Component {
         this.props.updateImageViewerOn(false);
     };
 
-    touchMoveCb = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-    };
-
-    componentDidMount() {
-        // this.imageViewer.current.addEventListener(
-        //     "touchmove",
-        //     this.touchMoveCb
-        // );
-    }
-
     render() {
         const { imageViewerOn, imageViewerList } = this.props;
         return (
             <div id="image-viewer" ref={this.imageViewer}>
+                <div className="bottom-board"></div>
                 {imageViewerOn ? (
                     <ViewerInner
                         closeImageViewer={this.closeImageViewer}

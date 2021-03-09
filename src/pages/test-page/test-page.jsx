@@ -1,6 +1,7 @@
 import React from "react";
 import Api from "@/api/index.js";
 import modal from "@/units/modalUnit.js";
+import { dropByCacheKey } from 'react-router-cache-route';
 
 class TestPage extends React.Component {
     state = {
@@ -98,6 +99,21 @@ class TestPage extends React.Component {
         });
     };
 
+    toLogin = () => {
+        this.props.history.push({
+            pathname: "/login",
+            state: { phone: "18122803695" },
+        });
+    };
+
+    drop = (key) =>()=>{
+        dropByCacheKey(key);
+    }
+
+    route = (path) =>()=>{
+        this.props.history.push(path);
+    }
+
     render() {
         return (
             <div>
@@ -106,6 +122,15 @@ class TestPage extends React.Component {
                 <button onClick={this.showToast}>showToast</button>
                 <button onClick={this.showLoading}>showLoading</button>
                 <button onClick={this.showModal}>showModal</button>
+                <button onClick={this.toLogin}>toLogin</button>
+                <input type="file" onChange={this.fileChange} />
+                <button onClick={this.submit}>submit</button>
+                <button onClick={this.drop('home')}>dropHome</button>
+                <button onClick={this.drop('group')}>dropGroup</button>
+                <button onClick={this.drop('me')}>dropMe</button>
+                <button onClick={this.route('/home')}>routeHome</button>
+                <button onClick={this.route('/group')}>routeGroup</button>
+                <button onClick={this.route('/me')}>routeMe</button>
             </div>
         );
     }

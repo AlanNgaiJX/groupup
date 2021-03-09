@@ -5,22 +5,40 @@ import "./viewer-inner.scss";
 
 class ViewerInner extends React.Component {
     state = {
-        imgHeight: 176,
+        imgHeight: "176px",
     };
 
-    imgsWrap = React.createRef();
+    viewerInner = React.createRef();
+
+    ontouchmove = (e) => {
+        e.preventDefault();
+    };
+
+    componentDidMount() {
+        this.viewerInner.current.addEventListener(
+            "touchmove",
+            this.ontouchmove
+        );
+    }
+
+    componentWillUnmount() {
+        this.viewerInner.current.removeEventListener(
+            "touchmove",
+            this.ontouchmove
+        );
+    }
 
     render() {
         const { imageViewerList } = this.props;
         return (
-            <div className="image-viewer-inner">
+            <div className="image-viewer-inner" ref={this.viewerInner}>
                 <div
                     className="btn-close"
                     onClick={this.props.closeImageViewer}
                 >
                     <Icon type="cross" size="lg" color="#fff" />
                 </div>
-                <div className="imgs-wrap" ref={this.imgsWrap}>
+                <div className="imgs-wrap">
                     <Carousel
                         autoplay={false}
                         infinite={false}
@@ -35,7 +53,7 @@ class ViewerInner extends React.Component {
                                     style={{
                                         display: "inline-block",
                                         width: "100%",
-                                        height: this.state.imgHeight + "px",
+                                        height: this.state.imgHeight,
                                     }}
                                 >
                                     <SquareImg

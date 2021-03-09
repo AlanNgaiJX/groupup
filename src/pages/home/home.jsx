@@ -4,13 +4,16 @@ import { WhiteSpace, PullToRefresh } from "antd-mobile";
 import SvgIcon from "@/components/svg-icon/svg-icon.js";
 import NavFooter from "@/components/nav-footer/nav-footer.jsx";
 import GroupItem from "@/components/group-item/group-item.jsx";
+import modal from "@/units/modalUnit.js";
 import "./home.scss";
 import Api from "@/api/index.js";
 
 const mapState = (state) => ({
     userId: state.userId,
+    refreshHome: state.refreshHome
 });
-const mapDispatch = {};
+const mapDispatch = {
+};
 
 class HomeUI extends React.Component {
     state = {
@@ -32,20 +35,23 @@ class HomeUI extends React.Component {
                 this.setState({
                     publicGroups: publicGroups,
                 });
+                this.props.history.push("/group-detail?groupId="+groupId);
             }
         });
     };
 
-    getAllPublicGroups = (cb) => {
-        Api.getAllPublicGroups({
-            userId: this.props.userId,
-        }).then((res) => {
-            if (res.data.code === 200) {
-                this.setState({
-                    publicGroups: res.data.data,
-                });
-            }
-            cb && typeof cb === "function" && cb();
+    getAllPublicGroups = () => {
+        return new Promise((resolve, reject) => {
+            Api.getAllPublicGroups({
+                userId: this.props.userId,
+            }).then((res) => {
+                if (res.data.code === 200) {
+                    this.setState({
+                        publicGroups: res.data.data,
+                    });
+                }
+                resolve();
+            });
         });
     };
 
@@ -54,7 +60,7 @@ class HomeUI extends React.Component {
             refreshing: true,
         });
 
-        this.getAllPublicGroups(() => {
+        this.getAllPublicGroups().then(() => {
             // 为了更好体验，下拉刷新动画至少持续一秒
             setTimeout(() => {
                 this.setState({
@@ -65,7 +71,10 @@ class HomeUI extends React.Component {
     };
 
     componentDidMount() {
-        this.getAllPublicGroups();
+        modal.showLoading();
+        this.getAllPublicGroups().then(() => {
+            modal.hideLoading();
+        });
     }
 
     componentWillUnmount = () => {

@@ -6,7 +6,7 @@ const avatarsStyle = {
     height: "40px",
     position: "relative",
 };
-export default Array.apply(null, { length: 30 }).map((item, index) => {
+export default Array.apply(null, { length: 10 }).map((item, index) => {
     return {
         label: (
             <div key={"avatar-" + index} style={{ ...avatarsStyle }}>

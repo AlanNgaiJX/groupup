@@ -8,9 +8,11 @@ import GroupItem from "@/components/group-item/group-item.jsx";
 import SvgIcon from "@/components/svg-icon/svg-icon.js";
 import Api from "@/api/index.js";
 import "./group.scss";
+import modal from "@/units/modalUnit.js";
 
 const mapState = (state) => ({
     userId: state.userId,
+    refreshGroup: state.refreshGroup
 });
 
 const mapDispatch = {};
@@ -32,36 +34,38 @@ class GroupUI extends React.Component {
 
     fetchData = (cb) => {
         const { userId } = this.props;
-        axios
-            .all([
-                Api.findGroupsByOwner({
-                    userId,
-                }),
-                Api.findPartGroups({ userId }),
-            ])
-            .then(
-                axios.spread((res_ownerGroups, res_partGroups) => {
-                    if (res_ownerGroups.data.code === 200) {
-                        this.setState({
-                            myGroups: res_ownerGroups.data.data.slice(0, 5),
-                        });
-                    }
-                    if (res_partGroups.data.code === 200) {
-                        this.setState({
-                            myParts: res_partGroups.data.data,
-                        });
-                    }
+        return new Promise((resolve) => {
+            axios
+                .all([
+                    Api.findGroupsByOwner({
+                        userId,
+                    }),
+                    Api.findPartGroups({ userId }),
+                ])
+                .then(
+                    axios.spread((res_ownerGroups, res_partGroups) => {
+                        if (res_ownerGroups.data.code === 200) {
+                            this.setState({
+                                myGroups: res_ownerGroups.data.data.slice(0, 5),
+                            });
+                        }
+                        if (res_partGroups.data.code === 200) {
+                            this.setState({
+                                myParts: res_partGroups.data.data,
+                            });
+                        }
 
-                    cb && typeof cb === "function" && cb();
-                })
-            );
+                        resolve();
+                    })
+                );
+        });
     };
 
     pullRefresh = () => {
         this.setState({
             refreshing: true,
         });
-        this.fetchData(() => {
+        this.fetchData().then(() => {
             // 为了更好体验，下拉刷新动画至少持续一秒
             setTimeout(() => {
                 this.setState({
@@ -71,8 +75,15 @@ class GroupUI extends React.Component {
         });
     };
 
+    toDetail = (groupId) => () => {
+        this.props.history.push(`/group-detail?groupId=${groupId}`);
+    };
+
     componentDidMount() {
-        this.fetchData();
+        modal.showLoading();
+        this.fetchData().then(()=>{
+            modal.hideLoading();
+        });
     }
 
     componentWillUnmount = () => {
@@ -120,6 +131,7 @@ class GroupUI extends React.Component {
                                         <li
                                             className="my-groups-item"
                                             key={item._id}
+                                            onClick={this.toDetail(item._id)}
                                         >
                                             <div className="cover-wrap">
                                                 <SquareImg

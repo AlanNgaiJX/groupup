@@ -3,7 +3,6 @@ import { withRouter } from "react-router";
 import SvgIcon from "@/components/svg-icon/svg-icon.js";
 import Avatar from "@/components/avatar/avatar.jsx";
 import "./me-card.scss";
-import { delCookie } from "@/units/utilsUnit.js";
 
 class MeCard extends React.Component {
     bgStyle = (background) => {
@@ -22,15 +21,11 @@ class MeCard extends React.Component {
     };
 
     toEdit = () => {
-        this.props.history.push("/me/info", {
-            userId: this.props.userId,
-        });
+        this.props.history.push(`/me/info?userId=${this.props.userId}`);
     };
 
     logout = () => {
-        delCookie("userId");
-        delCookie("token");
-        this.props.history.replace("/login");
+        this.props.logout();
     };
 
     render() {

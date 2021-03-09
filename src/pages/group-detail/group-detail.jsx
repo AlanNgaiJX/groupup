@@ -38,12 +38,16 @@ class GroupDetailUI extends React.Component {
         const img = new Image();
         img.setAttribute("crossOrigin", "Anonymous");
         img.onload = () => {
-            const rgbVal = new ColorThief()
-                .getColor(img, 1000000000000000000)
-                .join(",");
-            this.setState({
-                bgc: `rgb(${rgbVal})`,
-            });
+            try {
+                const rgbVal = new ColorThief()
+                    .getColor(img, 1000000000000000000)
+                    .join(",");
+                this.setState({
+                    bgc: `rgb(${rgbVal})`,
+                });
+            } catch (error) {
+                console.log(error);
+            }
         };
         img.src = src;
     };

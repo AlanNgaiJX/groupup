@@ -1,4 +1,6 @@
 import React from "react";
+import qs from "querystring";
+import { dropByCacheKey } from 'react-router-cache-route'
 import avatars from "./avatarsData.js";
 import bgs from "./bgsData.js";
 import {
@@ -100,6 +102,9 @@ class MeInfo extends React.Component {
             }).then((res) => {
                 modal.hideLoading();
                 if (res.data.code === 200) {
+                    dropByCacheKey("home");
+                    dropByCacheKey("group");
+                    dropByCacheKey("me");
                     modal.showToast({
                         title: "已保存",
                     });
@@ -116,7 +121,7 @@ class MeInfo extends React.Component {
     };
 
     componentDidMount() {
-        const { userId } = this.props.location.state;
+        const { userId } = qs.parse(this.props.location.search.slice(1));
         this.setState({
             userId,
         });

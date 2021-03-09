@@ -1,6 +1,9 @@
 import React from "react";
+import LazyLoad from "react-lazyload";
 import "./square-img.scss";
-const host = "http://127.0.0.1:1996/";
+import config from "@/config/index.js";
+
+const host = config.host;
 class SquareImg extends React.Component {
     state = {
         loading: true,
@@ -39,7 +42,7 @@ class SquareImg extends React.Component {
                 }px)`;
             }
         }
-        
+
         this.setState({
             loading: false,
             imgStyle,
@@ -52,32 +55,39 @@ class SquareImg extends React.Component {
 
     render() {
         const { loading, imgStyle } = this.state;
-        const src = this.props.host ? host + this.props.src : this.props.src;
+        const src = this.props.host
+            ? host + "/" + this.props.src
+            : this.props.src;
         const index = this.props.index || 0;
         return (
-            <div
-                className="square-img"
-                style={{ borderRadius: this.props.round ? "5%" : "0%", backgroundColor: this.props.bgc }}
-                data-index={index}
-            >
-                {loading && <div className="is-loading"></div>}
-                <img
-                    src={src}
-                    onLoad={this.onLoad}
+            <LazyLoad once overflow={true}>
+                <div
+                    className="square-img"
+                    style={{
+                        borderRadius: this.props.round ? "5%" : "0%",
+                        backgroundColor: this.props.bgc,
+                    }}
                     data-index={index}
-                    style={
-                        loading
-                            ? {
-                                  opacity: 0,
-                              }
-                            : {
-                                  opacity: 1,
-                                  ...imgStyle,
-                              }
-                    }
-                    alt=""
-                />
-            </div>
+                >
+                    {loading && <div className="is-loading"></div>}
+                    <img
+                        src={src}
+                        onLoad={this.onLoad}
+                        data-index={index}
+                        style={
+                            loading
+                                ? {
+                                      opacity: 0,
+                                  }
+                                : {
+                                      opacity: 1,
+                                      ...imgStyle,
+                                  }
+                        }
+                        alt=""
+                    />
+                </div>
+            </LazyLoad>
         );
     }
 }

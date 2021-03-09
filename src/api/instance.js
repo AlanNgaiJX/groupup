@@ -1,10 +1,9 @@
 import axios from "axios";
 import { getCookie } from "@/units/utilsUnit.js";
 import modal from "@/units/modalUnit.js";
+import Config from "@/config/index.js";
 
-// const host = "http://127.0.0.1:1984";
-const host = "/myServer"; // for local debug
-
+const host = Config.host;
 const instance = axios.create({
     baseURL: host,
     withCredentials: true,
@@ -30,7 +29,8 @@ instance.interceptors.response.use(
         }
         if (response.status === 200 && response.data.code === 99) {
             setTimeout(() => {
-                window.location.href = "/login";
+                window.location.href =
+                    window.location.href.split("#")[0] + "#/login";
             }, 1500);
         }
         return response;

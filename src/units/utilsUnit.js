@@ -1,5 +1,8 @@
 import crypto from "crypto-browserify";
 import { Buffer } from "buffer/";
+import config from "@/config/index.js";
+
+const host = config.host;
 
 // ArrayBuffer转为字符串，参数为ArrayBuffer对象
 export function ab2str(buf) {
@@ -49,8 +52,7 @@ export function delCookie(name) {
 
 // 获取图片的完整地址
 export function getFullSrc(partSrc) {
-    const host = "http://127.0.0.1:1996/";
-    return host + partSrc;
+    return host + "/"+partSrc;
 }
 
 // rem转px，注意使用时机（当网页加载出字体大小时）

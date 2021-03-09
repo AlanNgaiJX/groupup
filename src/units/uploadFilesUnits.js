@@ -1,9 +1,10 @@
 import crypto from "crypto-browserify";
-
+import config from "@/config/index";
+const host = config.host;
 const uploader = {};
 const EXIF = window.EXIF;
-uploader.uploadUrl = "http://localhost:3000/myServer/photo/uploadPhoto";
-uploader.checkUrl = "http://localhost:3000/myServer/photo/getPhotoByMd5";
+uploader.uploadUrl = host + "/photo/uploadPhoto";
+uploader.checkUrl = host + "/photo/getPhotoByMd5";
 uploader.userId = "6034d4e40bbc981be298f6f4";
 
 uploader.partSize = 1024 * 1024 * 4; //片段大小
@@ -600,7 +601,7 @@ function getUploadPath(photo) {
 }
 
 //处理文件名
- //eslint-disable-next-line
+//eslint-disable-next-line
 function convertFileName(photo) {
     var fileName = photo.file.name.replace(/\$/g, ""); //过滤$符号
 

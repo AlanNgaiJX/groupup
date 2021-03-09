@@ -311,6 +311,90 @@ module.exports = function (webpackEnv) {
             splitChunks: {
                 chunks: "all",
                 name: isEnvDevelopment,
+                // mark
+                cacheGroups: {
+                    vender: {
+                        name: "vendor",
+                        test: /[\\/]node_modules[\\/]/,
+                        chunks: "all",
+                        priority: 10,
+                        enforce: true,
+                    },
+                    reactDom: {
+                        name: "reactDom",
+                        test: (module) => /react-dom/.test(module.context),
+                        chunks: "initial",
+                        priority: 11,
+                        enforce: true,
+                    },
+                    reactRedux: {
+                        name: "reactRedux",
+                        test: (module) => /react-redux/.test(module.context),
+                        chunks: "initial",
+                        priority: 11,
+                        enforce: true,
+                    },
+                    reactLoadable:{
+                        name: "reactLoadable",
+                        test: (module) => /react-loadable/.test(module.context),
+                        chunks: "initial",
+                        priority: 11,
+                        enforce: true,
+                    },
+                    reactRouterDom:{
+                        name: "reactRouterDom",
+                        test: (module) => /react-router-dom/.test(module.context),
+                        chunks: "initial",
+                        priority: 11,
+                        enforce: true,
+                    },
+                    reactSticky:{
+                        name: "reactSticky",
+                        test: (module) => /react-sticky/.test(module.context),
+                        chunks: "initial",
+                        priority: 11,
+                        enforce: true,
+                    },
+                    reactRefresh:{
+                        name: "reactRefresh",
+                        test: (module) => /react-refresh/.test(module.context),
+                        chunks: "initial",
+                        priority: 11,
+                        enforce: true,
+                    },
+                    reactAppPolyfill:{
+                        name: "reactAppPolyfill",
+                        test: (module) => /react-app-polyfill/.test(module.context),
+                        chunks: "initial",
+                        priority: 11,
+                        enforce: true,
+                    },
+                    react:{
+                        name: "react",
+                        test: (module) => /react/.test(module.context),
+                        chunks: "initial",
+                        priority: 11,
+                        enforce: true,
+                    },
+                    antd: {
+                        name: "antd",
+                        test: (module) => {
+                            return /ant/.test(module.context);
+                        },
+                        chunks: "initial",
+                        priority: 11,
+                        enforce: true,
+                    },
+                    moment: {
+                        name: "moment",
+                        test: (module) => {
+                            return /moment/.test(module.context);
+                        },
+                        chunks: "initial",
+                        priority: 13,
+                        enforce: true,
+                    },
+                },
             },
             // Keep the runtime chunk separated to enable long term caching
             // https://twitter.com/wSokra/status/969679223278505985

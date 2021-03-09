@@ -1,11 +1,14 @@
 import React from "react";
+import { dropByCacheKey } from 'react-router-cache-route'
 import { connect } from "react-redux";
 import classnames from "classnames";
 import { publicEncrypt, getCookie } from "@/units/utilsUnit.js";
 import modal from "@/units/modalUnit.js";
 import Api from "@/api/index.js";
 import "./login.scss";
-import { updateUserId } from "@/redux/actionCreater.js";
+import {
+    updateUserId
+} from "@/redux/actionCreater.js";
 const mapState = (state) => ({
     publicKey: state.publicKey,
 });
@@ -68,6 +71,9 @@ class LoginUI extends React.Component {
                 modal.hideLoading();
                 if (res.data.code === 200) {
                     this.props.updateUserId(getCookie("userId"));
+                    dropByCacheKey("home");
+                    dropByCacheKey("group");
+                    dropByCacheKey("me");
                     this.props.history.replace("/me");
                 } else {
                     modal.showToast({ title: res.data.msg });
@@ -75,6 +81,13 @@ class LoginUI extends React.Component {
             });
         }
     };
+
+    componentDidMount() {
+        const phoneInput = this.props.location.state?.phone || "";
+        this.setState({
+            phoneInput,
+        });
+    }
 
     componentWillUnmount = () => {
         this.setState = () => {

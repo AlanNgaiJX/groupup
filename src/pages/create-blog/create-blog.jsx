@@ -1,4 +1,5 @@
 import React from "react";
+import { dropByCacheKey } from 'react-router-cache-route'
 import { connect } from "react-redux";
 import qs from "querystring";
 import "./create-blog.scss";
@@ -17,7 +18,8 @@ import Api from "@/api/index.js";
 const mapState = (state) => ({
     userId: state.userId,
 });
-const mapDispatch = {};
+const mapDispatch = {
+};
 
 class CreateBlogUI extends React.Component {
     state = {
@@ -39,7 +41,7 @@ class CreateBlogUI extends React.Component {
     };
 
     goBack = () => {
-        this.props.history.goBack();
+        this.props.history.go(-1);
     };
 
     submit = () => {
@@ -78,6 +80,9 @@ class CreateBlogUI extends React.Component {
                 (res) => {
                     modal.hideLoading();
                     if (res.data.code === 200) {
+                        dropByCacheKey("home");
+                        dropByCacheKey("group");
+                        dropByCacheKey("me");
                         this.goBack();
                     } else {
                         modal.showToast({ title: res.data.msg });

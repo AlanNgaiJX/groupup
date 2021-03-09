@@ -1,4 +1,5 @@
 import React from "react";
+import { dropByCacheKey } from 'react-router-cache-route'
 import { connect } from "react-redux";
 import "./create-group.scss";
 import {
@@ -18,7 +19,9 @@ import Api from "@/api/index.js";
 const mapState = (state) => ({
     userId: state.userId,
 });
-const mapDispatch = {};
+const mapDispatch = {
+
+};
 
 class CreateGroupUI extends React.Component {
     state = {
@@ -137,7 +140,9 @@ class CreateGroupUI extends React.Component {
                 }).then((res) => {
                     modal.hideLoading();
                     if (res.data.code === 200) {
-                        this.goBack()   
+                        dropByCacheKey("home");
+                        dropByCacheKey("group");
+                        this.goBack();
                     }
                 });
             },
@@ -168,7 +173,7 @@ class CreateGroupUI extends React.Component {
                 <WhiteSpace />
                 <WhiteSpace />
                 <WhiteSpace />
-                
+
                 {/* 群组名称 */}
                 <List renderHeader={() => "群组名称，（限20字符）"}>
                     <InputItem
