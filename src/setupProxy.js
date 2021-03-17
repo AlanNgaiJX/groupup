@@ -15,7 +15,7 @@ module.exports = function (app) {
         }),
         /* 配置多个代理... */
         createProxyMiddleware("/betaServer", {
-            target: "http://18.162.113.209:9001/myServer",
+            target: "http://18.163.192.144:9001/myServer",
             changeOrigin: true,
             pathRewrite: { "^/betaServer": "" },
         })

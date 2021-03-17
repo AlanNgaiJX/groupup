@@ -4,7 +4,7 @@
 
 ### Demo预览
 
-[预览链接](http://18.162.113.209:9001/groupup/)
+[预览链接](http://18.163.192.144:9001/groupup/)
 
 或扫描QRcode
 ![image](https://github.com/AlanNgaiJX/groupup/blob/master/onlineQRcode.png)
